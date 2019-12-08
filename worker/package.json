@@ -1,0 +1,18 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "Node Queueing Example worker",
+  "author": "Justin Marsh <justin@dynamogeek.com>",
+  "scripts": {
+    "start": "npm install && babel-node worker.js"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "nodemon": "^1.19.0",
+    "bull": "^3.10.0",
+    "dotenv": "^6.2.0"
+  }
+}

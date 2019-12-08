@@ -1,0 +1,38 @@
+version: '3'
+
+networks:
+  node-queueing-example:
+
+services:
+  node-consumer:
+    container_name: node-consumer
+    working_dir: /var/www
+    image: node:12
+    tty: true
+    command: npm run start
+    networks:
+      - node-queueing-example
+    volumes:
+      - ./consumer:/var/www
+    depends_on:
+      - redis
+    
+  node-worker:
+    container_name: node-worker
+    working_dir: /var/www
+    image: node:12
+    tty: true
+    command: npm run start
+    networks:
+      - node-queueing-example
+    volumes:
+      - ./worker:/var/www
+    depends_on:
+      - node-consumer
+      - redis
+
+  redis:
+    container_name: redis-queue
+    image: redis:5.0.4
+    networks:
+      - node-queueing-example
